@@ -1,0 +1,26 @@
+@use "../../assets/scss/utilities" as *;
+.switch {
+  width: 49px;
+  height: 28px;
+  border-radius: 15px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+  &.left {
+    justify-content: flex-start;
+    background: $background-bg1;
+  }
+  &.right {
+    justify-content: flex-end;
+    background: $system-success;
+  }
+  .insid-Switch {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+  }
+}

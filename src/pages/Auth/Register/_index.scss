@@ -1,0 +1,65 @@
+.register-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+
+  .register-page-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    .register-page-form {
+      width: 870px;
+      .register-page-form-fullname,
+      .register-page-form-email-phone,
+      .register-page-form-gender-level,
+      .register-page-form-password {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        > div {
+          display: flex;
+          flex-direction: column;
+          gap: 7px;
+          > label {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            color: #101828;
+          }
+          > input,
+          .register-page-form-phone-number,
+          select {
+            width: 400px;
+            height: 50px;
+            padding: 0px 13px 0px 13px;
+            border-radius: 10px;
+            border: 1px solid #e4e7ec;
+            outline: none;
+          }
+          > input::placeholder,
+          .register-page-form-input-phone::placeholder {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #d0d5dd;
+          }
+
+          .register-page-form-phone-number {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            > input {
+              width: 100%;
+              height: 48px;
+              border: none;
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

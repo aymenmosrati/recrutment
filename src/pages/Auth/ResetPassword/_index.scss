@@ -1,0 +1,28 @@
+.reset-password-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  .reset-password-page-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    > img {
+      margin-bottom: 100px;
+    }
+    .reset-password-page-form {
+      width: 870px;
+      display: flex;
+      flex-direction: column;
+        gap: 30px;
+      .reset-password-form-newpassword,
+      .reset-password-form-confirm-password {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
