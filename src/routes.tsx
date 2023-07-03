@@ -1,6 +1,6 @@
 import React, { Suspense, Fragment, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import AuthGuard from "./auth/AuthGuard";
+import AuthGuard from "./contexts/AuthGuard";
 
 export const RenderRoutes = ({ routes }: any) => (
   <Suspense fallback={<div>Loading...</div>}>

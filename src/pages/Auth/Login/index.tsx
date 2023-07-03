@@ -4,19 +4,20 @@ import PersonLoginPage from "../../../assets/img/personLoginPage.svg";
 import Button from "../../../components/Button";
 import "./_index.scss";
 import Message from "../../../components/Message";
+import { useAppDispatch } from "../../../hooks/hooksRedux";
+import { loginAction } from "../../../store/authSlice";
+import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { ToastContainer } from "react-toastify";
-import { Toast } from "../../../utilities/toast";
-import axiosInstance from "../../../utilities/axios";
-import { setSession } from "../../../utilities/utils";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const initialValues = {
     email: "",
     password: "",
   };
-
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email("Invalid email")
@@ -28,16 +29,19 @@ const Login = () => {
       .min(8, "Password must be at least 8 characters")
       .max(20, "Password must be 8 to 20 characters max"),
   });
-
   const handleSubmit = async () => {
-    
+    dispatch(
+      loginAction({
+        ...formik.values,
+        type: "STUDENT",
+      })
+    );
   };
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit: handleSubmit,
   });
-
   return (
     <form className="login-page" onSubmit={formik.handleSubmit}>
       <div className="login-form-design">
@@ -84,7 +88,14 @@ const Login = () => {
               <input type="checkbox" value="Remember me" id="rememberme" />
               <label htmlFor="rememberme">Remember me</label>
             </div>
-            <div className="login-forget-password">Forget password?</div>
+            <div
+              className="login-forget-password"
+              onClick={() => {
+                navigate("/ForgotPassword");
+              }}
+            >
+              Forget password?
+            </div>
           </div>
           <Button className="btn-login" text="Login" type="submit" />
           <ToastContainer />

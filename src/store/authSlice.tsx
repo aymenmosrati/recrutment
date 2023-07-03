@@ -1,4 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router";
 import axiosInstance from "../utilities/axios";
 import { Toast } from "../utilities/toast";
 import { setSession } from "../utilities/utils";
@@ -8,21 +9,18 @@ interface AuthState {
   error: string | null;
   user: {};
 }
-
 const initialState: AuthState = {
   isLoading: false,
   error: null,
   user: {},
 };
-export const loginAction = createAsyncThunk(
+
+export const loginAction: any = createAsyncThunk(
   "auth/login",
-  async (args, thunkAPI) => {
-    const { formData } = args;
+  async (args: any, thunkAPI) => {
     try {
-      const res = await axiosInstance.post(`api/v1/login`, {
-        formData,
-        type: "STUDENT",
-      });
+      const res = await axiosInstance.post(`/api/v1/login`, args);
+      const navigate = useNavigate();
       if (res.data.statusCode === 200) {
         Toast({
           status: "success",
@@ -30,32 +28,34 @@ export const loginAction = createAsyncThunk(
           toastId: "LoginSuccess",
         });
         setSession(res.data.data.tokens.accessToken);
+        navigate("/Dashboard");
       }
+      return res.data;
     } catch (err: any) {
-      console.log("err failer", err);
       Toast({
         status: "error",
         message: err.response.data.message,
         toastId: "LoginError",
       });
+      throw err.response.data;
     }
   }
 );
 
 const authSlice = createSlice({
-  name: "auth/login",
+  name: "auth",
   initialState,
   reducers: {},
   extraReducers: {
-    [loginAction.pending]: (state, action:PayloadAction<any>    ) => {
+    [loginAction.pending]: (state: AuthState) => {
       state.isLoading = true;
       state.error = null;
     },
-    [loginAction.fulfilled]: (state, action:PayloadAction<any>) => {
+    [loginAction.fulfilled]: (state: AuthState, action: PayloadAction<any>) => {
       state.isLoading = false;
-      state.quizzes = action.payload;
+      state.user = action.payload;
     },
-    [loginAction.rejected]: (state, action:PayloadAction<string>) => {
+    [loginAction.rejected]: (state: AuthState, action: PayloadAction<any>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
