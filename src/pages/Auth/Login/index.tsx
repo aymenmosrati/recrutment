@@ -1,19 +1,17 @@
-import Logo from "../../../assets/img/logo.svg";
-import Back_ground from "../../../assets/img/Maskgroup.svg";
-import PersonLoginPage from "../../../assets/img/personLoginPage.svg";
-import Button from "../../../components/Button";
-import "./_index.scss";
-import Message from "../../../components/Message";
-import { useAppDispatch } from "../../../hooks/hooksRedux";
-import { loginAction } from "../../../store/authSlice";
 import { ToastContainer } from "react-toastify";
-import { useNavigate } from "react-router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import PersonLoginPage from "../../../assets/img/personLoginPage.svg";
+import Back_ground from "../../../assets/img/Maskgroup.svg";
+import Logo from "../../../assets/img/logo.svg";
+import * as hooks from "../../../hooks";
+import { Button, Message } from "../../../components";
+import { loginAction } from "../../../store/authSlice";
+import "./_index.scss";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const navigate = hooks.useAppNavigate();
+  const dispatch = hooks.useAppDispatch();
   const initialValues = {
     email: "",
     password: "",
@@ -32,10 +30,11 @@ const Login = () => {
   const handleSubmit = async () => {
     dispatch(
       loginAction({
-        ...formik.values,
-        type: "STUDENT",
+        data: { ...formik.values, type: "STUDENT" },
+        navigate: navigate,
       })
     );
+    // navigate("/Dashboard");
   };
   const formik = useFormik({
     initialValues,

@@ -1,12 +1,11 @@
-import React from "react";
-import "./_index.scss";
-import ICError from "../../assets/img/IcError.svg";
 import ICSuccess from "../../assets/img/IcSuccess.svg";
 import ICWarning from "../../assets/img/IcWarning.svg";
 import IcNormale from "../../assets/img/IcNormale.svg";
+import ICError from "../../assets/img/IcError.svg";
+import "./_index.scss";
 
 type MessageProps = {
-  text: string; 
+  text: string;
   status: string;
 };
 

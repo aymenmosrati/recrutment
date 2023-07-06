@@ -7,13 +7,21 @@
   height: 60px;
   border-radius: 60px;
   background: #25c4f4;
-  font-family: Poppins;
   font-size: 21px;
-  font-weight: 500;
-  line-height: 32px;
   color: #ffffff;
   border: none;
   &:hover {
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .btn-login,
+  .btn-regiter,
+  .btn-forgot-password,
+  .btn-phone-code-validation,
+  .btn-reset-password {
+    width: 80%;
+    height: 40px;
   }
 }

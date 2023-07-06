@@ -1,5 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "../utilities/axios";
 import { Toast } from "../utilities/toast";
 import { setSession } from "../utilities/utils";
@@ -19,16 +19,18 @@ export const loginAction: any = createAsyncThunk(
   "auth/login",
   async (args: any, thunkAPI) => {
     try {
+      console.log("response", args);
       const res = await axiosInstance.post(`/api/v1/login`, args);
-      const navigate = useNavigate();
+
       if (res.data.statusCode === 200) {
+        console.log(res);
         Toast({
           status: "success",
           message: "Login successful",
           toastId: "LoginSuccess",
         });
         setSession(res.data.data.tokens.accessToken);
-        navigate("/Dashboard");
+        // navigate("/Dashboard");
       }
       return res.data;
     } catch (err: any) {
