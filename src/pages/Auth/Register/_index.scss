@@ -8,9 +8,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
     overflow-y: auto;
+    margin-top: 40px;
+    padding-bottom: 40px;
     .register-page-form {
       width: 870px;
       .register-page-form-fullname,
@@ -173,8 +173,10 @@
 @media screen and (max-width: 500px) {
   .register-page {
     .register-page-content {
-      width: 90%;
-
+      width: 100%;
+      > img {
+        width: 100px;
+      }
       .btn-regiter {
         font-size: 14px;
       }

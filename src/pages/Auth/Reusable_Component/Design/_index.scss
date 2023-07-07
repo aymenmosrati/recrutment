@@ -13,15 +13,6 @@
 
 @media screen and (max-width: 500px) {
   .design-reusable {
-    width: 10%;
-    > img {
-      display: none;
-    }
-  }
-}
-
-@media screen and (max-width: 250px) {
-  .design-reusable {
     display: none;
   }
 }
