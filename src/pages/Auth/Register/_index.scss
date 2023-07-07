@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+    overflow-y: auto;
     .register-page-form {
       width: 870px;
       .register-page-form-fullname,
@@ -26,7 +27,6 @@
           > label {
             font-size: 14px;
             font-weight: 400;
-            line-height: 21px;
             color: #101828;
           }
           > input,
@@ -43,7 +43,6 @@
           .register-page-form-input-phone::placeholder {
             font-size: 16px;
             font-weight: 400;
-            line-height: 24px;
             color: #d0d5dd;
           }
 
@@ -60,6 +59,133 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1052px) {
+  .register-page {
+    .register-page-content {
+      .register-page-form {
+        .register-page-form-fullname,
+        .register-page-form-email-phone,
+        .register-page-form-gender-level,
+        .register-page-form-password {
+          width: 100%;
+          @media screen and (max-width: 900px) {
+            margin-bottom: 20px;
+          }
+          > div {
+            width: 49%;
+            > input,
+            .register-page-form-phone-number,
+            select {
+              width: 100%;
+            }
+            @media screen and (max-width: 900px) {
+              > label {
+                font-size: 12px;
+              }
+              > input::placeholder,
+              .register-page-form-input-phone::placeholder {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1120px) {
+  .register-page {
+    .register-page-content {
+      .register-page-form {
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .register-page {
+    .register-page-content {
+      .register-page-form {
+        .register-page-form-fullname,
+        .register-page-form-email-phone,
+        .register-page-form-gender-level,
+        .register-page-form-password {
+          margin-bottom: 0px;
+          > div {
+            width: 49%;
+            margin-bottom: 15px;
+            > input,
+            .register-page-form-phone-number,
+            select {
+              width: 100%;
+            }
+            > label {
+              font-size: 12px;
+            }
+            > input::placeholder,
+            .register-page-form-input-phone::placeholder {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .register-page {
+    .register-page-content {
+      .register-page-form {
+        .register-page-form-fullname,
+        .register-page-form-email-phone,
+        .register-page-form-gender-level,
+        .register-page-form-password {
+          flex-direction: column;
+          > div {
+            width: 100%;
+            > input,
+            .register-page-form-phone-number,
+            select {
+              height: 40px;
+            }
+            .register-page-form-phone-number {
+              > input {
+                height: 38px;
+              }
+            }
+          }
+        }
+        .btn-regiter {
+          width: 100%;
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .register-page {
+    .register-page-content {
+      width: 90%;
+
+      .btn-regiter {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 250px) {
+  .register-page {
+    .register-page-content {
+      width: 100%;
     }
   }
 }

@@ -3,9 +3,25 @@
   height: 100%;
   background: #e5f9ff;
   border-radius: 0px 37px 37px 0px;
-  >img{
+  > img {
     position: absolute;
     top: 50%;
     transform: translate(-0%, -50%);
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .design-reusable {
+    width: 10%;
+    > img {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 250px) {
+  .design-reusable {
+    display: none;
   }
 }

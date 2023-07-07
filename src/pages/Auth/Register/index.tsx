@@ -149,6 +149,7 @@ const Register = () => {
                   className="register-page-form-input-phone"
                   value={formik.values.phonenumber}
                   onChange={handlePhoneNumberChange}
+                  onBlur={formik.handleBlur}
                 />
               </div>
               {formik.errors.phonenumber && formik.touched.phonenumber ? (
