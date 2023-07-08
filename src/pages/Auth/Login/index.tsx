@@ -30,8 +30,8 @@ const Login = () => {
   const handleSubmit = async () => {
     dispatch(
       loginAction({
-        data: { ...formik.values, type: "STUDENT" },
-        navigate: navigate,
+        ...formik.values,
+        type: "STUDENT",
       })
     );
     // navigate("/Dashboard");

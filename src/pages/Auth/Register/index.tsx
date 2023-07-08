@@ -54,11 +54,11 @@ const Register = () => {
 
   const handleSubmit = () => {
     console.log("values : ", formik.values);
-    // Toast({
-    //   status: "success",
-    //   message: "Register successful",
-    //   toastId: "RegisterSuccess",
-    // });
+    Toast({
+      status: "success",
+      message: "Register successful",
+      toastId: "RegisterSuccess",
+    });
     // Toast({
     //   status: "info",
     //   message: "Form submission in progress...",

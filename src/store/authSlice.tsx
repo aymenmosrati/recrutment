@@ -19,18 +19,16 @@ export const loginAction: any = createAsyncThunk(
   "auth/login",
   async (args: any, thunkAPI) => {
     try {
-      console.log("response", args);
       const res = await axiosInstance.post(`/api/v1/login`, args);
-
+      console.log(res);
       if (res.data.statusCode === 200) {
-        console.log(res);
         Toast({
           status: "success",
           message: "Login successful",
           toastId: "LoginSuccess",
         });
         setSession(res.data.data.tokens.accessToken);
-        // navigate("/Dashboard");
+        // args.navigate("/Dashboard");
       }
       return res.data;
     } catch (err: any) {
