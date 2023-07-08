@@ -9,8 +9,8 @@
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
-    // padding-top: 40px;
-    // padding-bottom: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     .register-page-form {
       width: 870px;
       .register-page-form-fullname,
@@ -172,6 +172,7 @@
 
 @media screen and (max-width: 500px) {
   .register-page {
+    width: 100%;
     .register-page-content {
       width: 100%;
       > img {
