@@ -1,6 +1,7 @@
 import React, { Suspense, Fragment, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import AuthGuard from "./contexts/AuthGuard";
+import GuestGuard from "./contexts/GuestGuard";
 
 export const RenderRoutes = ({ routes }: any) => (
   <Suspense fallback={<div>Loading...</div>}>
@@ -30,32 +31,32 @@ export const RenderRoutes = ({ routes }: any) => (
 export const routes = [
   {
     path: "/",
-    // guard: GuestGuard,
+    guard: GuestGuard,
     component: lazy(() => import("./pages/Auth/Login")),
   },
   {
     path: "/login",
-    // guard: GuestGuard,
+    guard: GuestGuard,
     component: lazy(() => import("./pages/Auth/Login")),
   },
   {
     path: "/register",
-    // guard: GuestGuard,
+    guard: GuestGuard,
     component: lazy(() => import("./pages/Auth/Register")),
   },
   {
     path: "/ForgotPassword",
-    // guard: GuestGuard,
+    guard: GuestGuard,
     component: lazy(() => import("./pages/Auth/ForgotPassword")),
   },
   {
     path: "/PhoneCodeValidation",
-    // guard: GuestGuard,
+    guard: GuestGuard,
     component: lazy(() => import("./pages/Auth/PhoneCodeValidation")),
   },
   {
     path: "/ResetPassword",
-    // guard: GuestGuard,
+    guard: GuestGuard,
     component: lazy(() => import("./pages/Auth/ResetPassword")),
   },
   {

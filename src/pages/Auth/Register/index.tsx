@@ -18,6 +18,7 @@ const Register = () => {
     phonenumber: "",
     gender: "",
     level: "",
+    city: "",
     password: "",
     confirmpassword: "",
   };
@@ -41,6 +42,7 @@ const Register = () => {
       .required("Phone number is required"),
     gender: Yup.string().required("Gender is required"),
     level: Yup.string().required("Level is required"),
+    city: Yup.string().required("City is required"),
     password: Yup.string()
       .required("Password is required")
       .min(8, "Password must be at least 8 characters")
@@ -180,6 +182,45 @@ const Register = () => {
                 <Message text={formik.errors.level} status="error" />
               ) : null}
             </div>
+          </div>
+          <div className="register-page-form-cities">
+            <label htmlFor="city">city</label>
+            <select id="city" {...formik.getFieldProps("city")}>
+              <option hidden>-- Select City --</option>
+              {[
+                "Tunis",
+                "Ariana",
+                "Ben Arous",
+                "Manouba",
+                "Nabeul",
+                "Zaghouan",
+                "Bizerte",
+                "Béja",
+                "Jendouba",
+                "Kef",
+                "Siliana",
+                "Kairouan",
+                "Kasserine",
+                "Sidi Bouzid",
+                "Sousse",
+                "Monastir",
+                "Mahdia",
+                "Sfax",
+                "Gabès",
+                "Medenine",
+                "Tataouine",
+                "Gafsa",
+                "Tozeur",
+                "Kebili",
+              ].map((element, index) => (
+                <option value={element} key={index}>
+                  {element}
+                </option>
+              ))}
+            </select>
+            {formik.errors.city && formik.touched.city ? (
+              <Message text={formik.errors.city} status="error" />
+            ) : null}
           </div>
           <div className="register-page-form-password">
             <div>

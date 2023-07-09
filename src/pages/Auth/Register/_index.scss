@@ -59,6 +59,24 @@
           }
         }
       }
+      .register-page-form-cities {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        margin-bottom: 20px;
+        > label {
+          font-size: 14px;
+          font-weight: 400;
+          color: #101828;
+        }
+        > select {
+          height: 50px;
+          padding: 0px 13px 0px 13px;
+          border-radius: 10px;
+          border: 1px solid #e4e7ec;
+          outline: none;
+        }
+      }
     }
   }
 }
@@ -72,9 +90,6 @@
         .register-page-form-gender-level,
         .register-page-form-password {
           width: 100%;
-          @media screen and (max-width: 900px) {
-            margin-bottom: 20px;
-          }
           > div {
             width: 49%;
             > input,
@@ -82,21 +97,13 @@
             select {
               width: 100%;
             }
-            @media screen and (max-width: 900px) {
-              > label {
-                font-size: 12px;
-              }
-              > input::placeholder,
-              .register-page-form-input-phone::placeholder {
-                font-size: 12px;
-              }
-            }
           }
         }
       }
     }
   }
 }
+
 @media screen and (max-width: 1120px) {
   .register-page {
     .register-page-content {
@@ -131,6 +138,11 @@
             .register-page-form-input-phone::placeholder {
               font-size: 12px;
             }
+          }
+        }
+        .register-page-form-cities {
+          > label {
+            font-size: 12px;
           }
         }
       }
@@ -172,7 +184,6 @@
 
 @media screen and (max-width: 500px) {
   .register-page {
-    width: 100%;
     .register-page-content {
       width: 100%;
       > img {

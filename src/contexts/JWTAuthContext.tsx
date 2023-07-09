@@ -79,7 +79,7 @@ const reducer = (
   }
 };
 
-const AuthContext = createContext({
+const AuthContext: React.Context<any> = createContext({
   ...initialAuthState,
   method: "JWT",
   login: () => Promise.resolve(),
@@ -88,31 +88,6 @@ const AuthContext = createContext({
 
 export const AuthProvider = ({ children }: AuthGuardProps) => {
   const [state, dispatch] = useReducer(reducer, initialAuthState);
-  const login = async (email: string, password: string) => {
-    const response = await axios.post("/api/account/login", {
-      email,
-      password,
-    });
-    const { token, user } = response.data;
-
-    setSession(token);
-    dispatch({
-      type: "LOGIN",
-      payload: {
-        user,
-      },
-    });
-  };
-
-  const logout = () => {
-    setSession(null);
-    dispatch({
-      type: "LOGOUT",
-      payload: {
-        isAuthenticated: false,
-      },
-    });
-  };
 
   useEffect(() => {
     const initialise = async () => {
@@ -123,7 +98,6 @@ export const AuthProvider = ({ children }: AuthGuardProps) => {
           setSession(token);
           // const response = await axios.get('/api/account/me');
           // const { user } = response.data;
-
           dispatch({
             type: "INITIALISE",
             payload: {
@@ -159,6 +133,34 @@ export const AuthProvider = ({ children }: AuthGuardProps) => {
     return <div>Loding...</div>;
   }
 
+  const login = async (email: string, password: string) => {
+    console.log("test", email, password);
+
+    const response = await axios.post("/api/v1/login", {
+      email,
+      password,
+      type: "STUDENT",
+    });
+    const { token, user } = response.data;
+
+    setSession(token);
+    dispatch({
+      type: "LOGIN",
+      payload: {
+        user,
+      },
+    });
+  };
+
+  const logout = () => {
+    setSession(null);
+    dispatch({
+      type: "LOGOUT",
+      payload: {
+        isAuthenticated: false,
+      },
+    });
+  };
   return (
     <AuthContext.Provider
       value={{

@@ -8,10 +8,13 @@ import * as hooks from "../../../hooks";
 import { Button, Message } from "../../../components";
 import { loginAction } from "../../../store/authSlice";
 import "./_index.scss";
+import useAuth from "../../../hooks/useAuth";
+import { Toast } from "../../../utilities/toast";
 
 const Login = () => {
   const navigate = hooks.useAppNavigate();
   const dispatch = hooks.useAppDispatch();
+  const { login } = useAuth();
   const initialValues = {
     email: "",
     password: "",
@@ -28,13 +31,32 @@ const Login = () => {
       .max(20, "Password must be 8 to 20 characters max"),
   });
   const handleSubmit = async () => {
+    // try {
+    //   console.log(formik.values);
+    //   await login(formik.values.email, formik.values.password);
+    // } catch (err: any) {}
+    // navigate("/Dashboard");
     dispatch(
       loginAction({
         ...formik.values,
         type: "STUDENT",
       })
-    );
-    // navigate("/Dashboard");
+    )
+      .then((res: any) => {
+        Toast({
+          status: "success",
+          message: "Login successful",
+          toastId: "LoginSuccess",
+        });
+        navigate("/Dashboard");
+      })
+      .catch((err: any) => {
+        Toast({
+          status: "error",
+          message: err.response.data.message,
+          toastId: "LoginError",
+        });
+      });
   };
   const formik = useFormik({
     initialValues,
